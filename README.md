@@ -1,4 +1,4 @@
-# DiffableDataSourceChatApp with Dinamic Section and Dynamic rows inside Section
+# DiffableDataSourceChatApp with Dynamic Section and Dynamic rows inside Section
 Chat app demo implemented using UITableViewDiffableDataSource where  number of section are dynamic(e.g. coming from server). 
 
 # Screenshot 
