@@ -43,8 +43,9 @@ class MessageTableViewCell: UITableViewCell {
     //MARK:- view life cycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        //cell background color to clear color
+        //cell background color to clear color and set selection to .none
         backgroundColor = .clear
+        selectionStyle = .none
         //1. Add Label
         addSubview(messageBackgroundView)
         //2.
@@ -52,7 +53,6 @@ class MessageTableViewCell: UITableViewCell {
         //3. Apply constraint
         NSLayoutConstraint.activate([
             //1. Message Label constraint
-            
             messageLabel.topAnchor.constraint(equalTo: topAnchor, constant: paddingCell*2),
             messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -paddingCell*2),
             //2. Message BackgroundView constraint

@@ -17,15 +17,16 @@ class ViewController: UITableViewController {
     //MARK:- View Controller life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        //1. Set Navigation Title
         self.title = "Messages"
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.tableView.backgroundColor = UIColor(white: 0.90, alpha: 1.0)
-        self.tableView.separatorStyle = .none
-        self.tableView.estimatedRowHeight = 100
-        self.tableView.rowHeight =  UITableView.automaticDimension
-
+        //2. Table Customization
+        self.tableViewCustomization()
+        //3. Register 'MessageTableViewCell'
         tableView.register(MessageTableViewCell.self, forCellReuseIdentifier: self.cellIdentifier)
+        //4. Create DataSource
         self.createDiffableDataSource()
+        //4. Create snapshot and apple to datasource
         self.createSnapShotAndApply()
     }
 
@@ -41,25 +42,30 @@ class ViewController: UITableViewController {
     
     //MARK:- Snapshot
     fileprivate func createSnapShotAndApply() {
-        //1.
+        //1. init snapshot
         self.snapShot = diffableSnapshots()
-        //2.
+        //2. append sections
         let allSection = Section.allMessagesSection
         self.snapShot?.appendSections(allSection)
-        //3.
+        //3. append rows in section
         allSection.forEach { section in
             self.snapShot?.appendItems(section.message, toSection: section)
         }
-        //4.
+        //4. apply to datasoruce
         self.dataSource.apply(self.snapShot!)
-        
+    }
+    
+    //MARK:- Table View Customization
+    fileprivate func tableViewCustomization() {
+        self.tableView.backgroundColor = UIColor(white: 0.90, alpha: 1.0)
+        self.tableView.separatorStyle = .none
     }
 }
 
 //MARK:- TableView Delegate
 extension ViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20.0
+        return 30.0
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

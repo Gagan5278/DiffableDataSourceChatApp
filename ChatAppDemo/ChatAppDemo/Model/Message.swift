@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct  Message: Hashable {
+struct Message: Hashable {
     let messageString: String
     let isIncomingMessage: Bool
     let date: Date
